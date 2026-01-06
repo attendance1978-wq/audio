@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clickable Image Link</title>
+    <title>xvideos</title>
     <style>
         body {
             display: flex;
@@ -13,16 +13,16 @@
             background-color: #f0f0f0;
         }
 
-        .clickable-image img {
+        img {
             max-width: 90%;
             height: auto;
             border: 3px solid #333;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .clickable-image img:hover {
+        img:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
@@ -30,9 +30,15 @@
 </head>
 <body>
 
-    <a href="https://attendance1978-wq.github.io/audio/" target="_blank" class="clickable-image">
-        <img src="https://raw.githubusercontent.com/attendance1978-wq/audio/7601e5170eda7054ff55acc91b160ee5c4bef5c1/OIP.jpg" alt="Go to Audio Page">
-    </a>
+    <img src="https://raw.githubusercontent.com/attendance1978-wq/audio/7601e5170eda7054ff55acc91b160ee5c4bef5c1/OIP.jpg" alt="Click to Ban" id="banImage">
+
+    <script>
+        // When the image is clicked, redirect to a "banned" page
+        document.getElementById('banImage').addEventListener('click', function() {
+            // Redirect user
+            window.location.href = "banned.html"; // Create this page with a ban message
+        });
+    </script>
 
 </body>
 </html>
