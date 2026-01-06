@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio Player - 18+ Restricted</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  h1 {
+    color: #ff4444;
+  }
+  .hidden {
+    display: none;
+  }
+  .audio-player, .audio-list, .age-check {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    background: #222;
+    text-align: center;
+  }
+  input[type="text"], input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #ff4444;
+    color: #fff;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+  }
+  button:hover {
+    background: #ff2222;
+  }
+</style>
+</head>
+<body>
+
+<div class="age-check">
+  <h1>Age Verification</h1>
+  <p>You must be 18+ to access this content.</p>
+  <input type="number" id="ageInput" placeholder="Enter your age">
+  <br>
+  <button onclick="checkAge()">Enter</button>
+</div>
+
+<div class="audio-player hidden">
+  <h1>Audio Player</h1>
+  <input type="text" id="audioLink" placeholder="Enter audio URL (mp3/ogg)">
+  <button onclick="playLink()">Play Audio Link</button>
+  <audio id="player" controls>
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<div class="audio-list hidden">
+  <p>Preloaded Sounds:</p>
+  <button onclick="playAudio('eerie-atmosphere-rumble.ogg')">Eerie Atmosphere</button>
+  <button onclick="playAudio('horrible-annoying-sound.ogg')">Horrible Sound</button>
+  <button onclick="playAudio('horror-sound-for-background.ogg')">Horror Background</button>
+</div>
+
+<script>
+  const player = document.getElementById('player');
+  const ageCheckDiv = document.querySelector('.age-check');
+  const audioPlayerDiv = document.querySelector('.audio-player');
+  const audioListDiv = document.querySelector('.audio-list');
+
+  function checkAge() {
+    const age = parseInt(document.getElementById('ageInput').value);
+    if(isNaN(age)) {
+      alert("Please enter a valid number!");
+    } else if(age >= 18) {
+      // Show audio player
+      ageCheckDiv.classList.add('hidden');
+      audioPlayerDiv.classList.remove('hidden');
+      audioListDiv.classList.remove('hidden');
+    } else {
+      alert("Sorry, you must be 18 or older to access this content.");
+    }
+  }
+
+  function playAudio(file) {
+    player.src = file;
+    player.play();
+  }
+
+  function playLink() {
+    const url = document.getElementById('audioLink').value;
+    if(url) {
+      player.src = url;
+      player.play();
+    } else {
+      alert("Please enter a valid audio URL!");
+    }
+  }
+</script>
+
+</body>
+</html>
